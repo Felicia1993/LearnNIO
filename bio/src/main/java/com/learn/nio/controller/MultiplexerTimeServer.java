@@ -29,6 +29,7 @@ public class MultiplexerTimeServer implements Runnable{
             servChannel.configureBlocking(false);
             //绑定监听端口，设置连接为非阻塞模式
             servChannel.socket().bind(new InetSocketAddress(port), 1024);
+            //将新接入的客户端连接注册到Reactor线程的多路复用器上，监听读操作，用来读取客户端发送的网络消息
             servChannel.register(selector, SelectionKey.OP_ACCEPT);
             System.out.println("The time server is start in port :" + port);
         } catch (IOException e) {
