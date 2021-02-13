@@ -1,0 +1,3 @@
+Selector
+
+多路复用的核心是通过Selector来轮询注册在其上的channel，当发现某个或多个channel处于就绪状态后，从阻塞状态返回就就绪的Channel的选择键集合，进行IO操作。
